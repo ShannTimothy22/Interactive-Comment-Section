@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="scss/main.scss" type="text/css" />
+    
+
+    <title>Frontend Mentor | Interactive comments section</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Pull dynamic content from the data.json file -->
+
+    <main>
+        <section class="comment-section">
+            <div class="comment-section__container">                
+                <div class="comment-item-wrapper">
+                  <!-- start of single item -->
+                  <div class="comment" data-num="1" id="comment-1">
+                    <div class="comment-item">
+                        <div class="comment-item__header">
+                            <img class="profile-pic" src="../images/avatars/image-amyrobson.png" alt="profile-pic">
+                            <span class="user-name">amyrobson</span>
+                            <span class="date text-secondary">1 month ago</span>
+                        </div>
+                        <div class="comment-item__comment text-secondary">
+                            <p class="comment">Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.</p>
+                        </div>
+                        <div class="comment-item__footer">
+                            <div class="rating">
+                                <img data-num="btn1" id="btn1-plus" class="plus" src="../images/icon-plus.svg" alt="plus">
+                                <span id="btn1-counter" class="point">0</span>
+                                <img data-num="btn1" id="btn1-minus" class="minus" src="../images/icon-minus.svg" alt="minus">
+                            </div>
+                            <div class="action">
+                              <span data-num="btn1" class="reply" id="btn-1-reply"><img  src="../images/icon-reply.svg" alt="reply">reply</span>
+                              <span class="delete" id="delete-1"><img  src="../images/icon-delete.svg" alt="delete">delete</span>
+                              <span class="edit" id="edit-1"><img src="../images/icon-edit.svg" alt="edit">edit</span>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- end of single item -->
+                  <!-- start of single item -->
+                  <div class="comment-2" data-num="2" id="comment-2">
+                    <div class="comment-item">
+                        <div class="comment-item__header">
+                            <img class="profile-pic" src="../images/avatars/image-amyrobson.png" alt="profile-pic">
+                            <span class="user-name">amyrobson</span>
+                            <span class="date text-secondary">1 month ago</span>
+                        </div>
+                        <div class="comment-item__comment text-secondary">
+                            <p class="comment">Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.</p>
+                        </div>
+                        <div class="comment-item__footer">
+                            <div class="rating">
+                                <img data-num="btn2" id="btn2-plus" class="plus" src="../images/icon-plus.svg" alt="plus">
+                                <span id="btn2-counter" class="point">0</span>
+                                <img data-num="btn2" id="btn2-minus" class="minus" src="../images/icon-minus.svg" alt="minus">
+                            </div>
+                            <div class="action">
+                              <span data-num="btn2" class="reply" id="btn-2-reply"><img  src="../images/icon-reply.svg" alt="reply">reply</span>
+                              <span class="delete" id="delete-2"><img  src="../images/icon-delete.svg" alt="delete">delete</span>
+                              <span class="edit" id="edit-2"><img src="../images/icon-edit.svg" alt="edit">edit</span>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- end of single item -->               
+                  <div class="dropdown">
+                  <!-- start of single item -->
+                    <div class="comment-item">
+                      <div class="comment-item__header">
+                          <img class="profile-pic" src="../images/avatars/image-amyrobson.png" alt="profile-pic">
+                          <span class="user-name">amyrobson</span>
+                          <span class="date text-secondary">1 month ago</span>
+                      </div>
+                      <div class="comment-item__comment">
+                          <p class="comment text-secondary">Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.</p>
+                      </div>
+                      <div class="comment-item__footer">
+                          <div class="rating">
+                            <img class="plus" src="../images/icon-plus.svg" alt="plus">
+                            <span class="point">2</span>
+                            <img class="minus" src="../images/icon-minus.svg" alt="minus">
+                          </div>
+                          <div class="action">
+                            <span class="reply"><img id="reply" src="../images/icon-reply.svg" alt="reply">reply</span>
+                            <span class="delete"><img id="delete" src="../images/icon-delete.svg" alt="delete">delete</span>
+                            <span class="edit"><img id="edit" src="../images/icon-edit.svg" alt="edit">edit</span>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- end of single item -->
+                  <!-- start of single item -->
+                    <div class="comment-item">
+                      <div class="comment-item__header">
+                          <img class="profile-pic" src="../images/avatars/image-amyrobson.png" alt="profile-pic">
+                          <span class="user-name">amyrobson</span>
+                          <span class="date text-secondary">1 month ago</span>
+                      </div>
+                      <div class="comment-item__comment">
+                          <p class="comment text-secondary">Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.</p>
+                      </div>
+                      <div class="comment-item__footer">
+                          <div class="rating">
+                            <img class="plus" src="../images/icon-plus.svg" alt="plus">
+                            <span class="point">2</span>
+                            <img class="minus" src="../images/icon-minus.svg" alt="minus">
+                          </div>
+                          <div class="action">
+                              <span class="reply"><img id="reply" src="../images/icon-reply.svg" alt="reply">reply</span>
+                              <span class="delete"><img id="delete" src="../images/icon-delete.svg" alt="delete">delete</span>
+                              <span class="edit"><img id="edit" src="../images/icon-edit.svg" alt="edit">edit</span>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- end of single item -->
+                  </div>
+                </div>
+                <div class="comment-inp">
+                    <div class="comment-inp__input">
+                        <textarea name="input-text" id="input-text" class="input-text" placeholder="Add a comment..."></textarea>
+                    </div>
+                    <div class="comment-inp__user">
+                        <img class="user-pic" src="../images/avatars/image-juliusomo.png" alt="user">
+                        <button id="send" class="send">send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>. -->
+    </div>    
+  </body>
+  <script src="script.js"></script>
+</html>

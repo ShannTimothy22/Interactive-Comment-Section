@@ -1,0 +1,21 @@
+@use "../abstracts/variables" as *;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  font-family: "Rubik", sans-serif;
+  box-sizing: inherit;
+}
+
+body {
+  background: $Light-gray;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

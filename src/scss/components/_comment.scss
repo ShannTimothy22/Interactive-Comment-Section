@@ -1,0 +1,133 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.hidden {
+  display: none;
+}
+
+.comment-section__container {
+  .text-secondary {
+    color: $Grayish-Blue;
+  }
+
+  .dropdown {
+    border-left: 1px solid $Light-grayish-blue;
+    padding-left: 1.5rem;
+  }
+
+  .comment-item {
+    background: $White;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    padding: 1rem;
+
+    &__header {
+      max-width: 90%;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: space-around;
+      font-size: 16px;
+
+      .profile-pic {
+        max-width: 40px;
+      }
+
+      .user-name {
+        color: $Dark-blue;
+        font-weight: 600;
+      }
+    }
+
+    &__comment {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 8px;
+        background: $Very-light-gray;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+
+        .point {
+          color: $Dark-blue;
+          font-weight: 600;
+        }
+      }
+
+      .action {
+        display: flex;
+        cursor: pointer;
+
+        .reply {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: $Moderate-blue;
+          text-transform: capitalize;
+          font-weight: 600;
+        }
+
+        .delete {
+          display: none;
+          //display: flex;
+          align-items: center;
+        }
+
+        .edit {
+          display: none;
+          //display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+  .comment-inp {
+    background: $White;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    &__input {
+      .input-text {
+        width: 100%;
+        height: 100px;
+        resize: none;
+        border: 2px solid $Light-gray;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .user-pic {
+        max-width: 40px;
+      }
+
+      .send {
+        background: $Moderate-blue;
+        color: $White;
+        padding: 0.75rem 1.5rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        border-radius: 8px;
+      }
+    }
+  }
+}
