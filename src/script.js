@@ -1,7 +1,7 @@
 var data = {
   "currentUser": [{
     "image": { 
-      "png": "./images/avatars/image-juliusomo.png",
+      "png": "http://localhost:1234/image-juliusomo.b6fe7bf6.png",
       "webp": "./images/avatars/image-juliusomo.webp"
     },
     "username": "juliusomo"
@@ -75,36 +75,51 @@ var inc_counter = function (event) {
   let id = event.target.dataset.num;
   var counter = document.getElementById(id + "-counter");
   counter.innerHTML++;
+  console.log(counter.innerHTML);
 };
 
 var dec_counter = function (event) {
   let id = event.target.dataset.num;
   var counter = document.getElementById(id + "-counter");
   counter.innerHTML--;
+  console.log(counter.innerHTML);
 };
 
 const commentItem = document.querySelector(".comment");
 const userPic = document.querySelector(".user-pic");
 const img = userPic.src;
 
+let flag = true;
 var replyComment = function (event) {
   let id =
     event.target.parentElement.parentElement.parentElement.parentElement.dataset
       .num;
   var test = document.getElementById("comment-" + id);
-
-  const div = document.createElement("div");
-
-  div.innerHTML = `<div class="comment-inp">
-  <div class="comment-inp__input">
-      <textarea name="input-text" id="input-text" class="input-text" placeholder="Add a comment..."></textarea>
-  </div>
-  <div class="comment-inp__user">
-      <img class="user-pic" src="${json.currentUser[0].image.png}" alt="user">
-      <button id="send" class="send">send</button>
+  var elem = document.createElement("div");
+  
+  if(flag){    
+    elem.innerHTML = `<div class="comment-inp">
+    <div class="comment-inp__input">
+        <textarea name="input-text" id="input-text" class="input-text" placeholder="Add a comment..."></textarea>
     </div>
-  </div>`;
-  test.append(div);
+    <div class="comment-inp__user">
+        <img class="user-pic" src="${json.currentUser[0].image.png}" alt="user">
+        <button id="send" class="send">send</button>
+      </div>
+    </div>`;
+    test.appendChild(elem.firstChild);
+    flag = !flag
+    //console.log(flag);
+  } else if (!flag){
+    const inp = document.querySelector(".comment-inp");
+    test.removeChild(inp);
+    flag = true;
+    //console.log(flag);
+    //console.log(div);
+  }
+
+  sendComment();
+
 };
 
 for (let i = 1; i < 3; i++) {
@@ -132,6 +147,9 @@ function sendComment() {
   const deletes = document.getElementById("delete");
 
   const div = document.createElement("div");
+  div.className = "comment";
+  div.setAttribute("id" , "comment-3");
+  div.setAttribute("data-num", "3");
 
   const imgPlus = plus.src;
   const imgMinus = minus.src;
@@ -140,7 +158,8 @@ function sendComment() {
   const imgDelete = deletes.src;
 
   const comment = getComment();
-  div.innerHTML = `<div class="comment-item">
+  div.innerHTML = `
+  <div class="comment-item">
   <div class="comment-item__header">
       <img class="profile-pic" src="${img}" alt="profile-pic">
       <span class="user-name">amyrobson</span>
@@ -151,9 +170,9 @@ function sendComment() {
   </div>
   <div class="comment-item__footer">
       <div class="rating">
-        <img class="plus" src="${imgPlus}" alt="plus">
-        <span class="point">2</span>
-        <img class="minus" src="${imgMinus}" alt="minus">
+      <img data-num="btn3" id="btn3-plus" class="plus" src="${imgPlus}" alt="plus">
+      <span id="btn3-counter" class="point">0</span>
+      <img data-num="btn3" id="btn3-minus" class="minus" src="${imgMinus}" alt="minus">
       </div>
       <div class="action">
           <span class="reply"><img id="reply" src="${imgReply}" alt="reply">reply</span>

@@ -121,7 +121,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var data = {
   "currentUser": [{
     "image": {
-      "png": "./images/avatars/image-juliusomo.png",
+      "png": "http://localhost:1234/image-juliusomo.b6fe7bf6.png",
       "webp": "./images/avatars/image-juliusomo.webp"
     },
     "username": "juliusomo"
@@ -187,24 +187,38 @@ var inc_counter = function inc_counter(event) {
   var id = event.target.dataset.num;
   var counter = document.getElementById(id + "-counter");
   counter.innerHTML++;
+  console.log(counter.innerHTML);
 };
 
 var dec_counter = function dec_counter(event) {
   var id = event.target.dataset.num;
   var counter = document.getElementById(id + "-counter");
   counter.innerHTML--;
+  console.log(counter.innerHTML);
 };
 
 var commentItem = document.querySelector(".comment");
 var userPic = document.querySelector(".user-pic");
 var img = userPic.src;
+var flag = true;
 
 var replyComment = function replyComment(event) {
   var id = event.target.parentElement.parentElement.parentElement.parentElement.dataset.num;
   var test = document.getElementById("comment-" + id);
-  var div = document.createElement("div");
-  div.innerHTML = "<div class=\"comment-inp\">\n  <div class=\"comment-inp__input\">\n      <textarea name=\"input-text\" id=\"input-text\" class=\"input-text\" placeholder=\"Add a comment...\"></textarea>\n  </div>\n  <div class=\"comment-inp__user\">\n      <img class=\"user-pic\" src=\"".concat(json.currentUser[0].image.png, "\" alt=\"user\">\n      <button id=\"send\" class=\"send\">send</button>\n    </div>\n  </div>");
-  test.append(div);
+  var elem = document.createElement("div");
+
+  if (flag) {
+    elem.innerHTML = "<div class=\"comment-inp\">\n    <div class=\"comment-inp__input\">\n        <textarea name=\"input-text\" id=\"input-text\" class=\"input-text\" placeholder=\"Add a comment...\"></textarea>\n    </div>\n    <div class=\"comment-inp__user\">\n        <img class=\"user-pic\" src=\"".concat(json.currentUser[0].image.png, "\" alt=\"user\">\n        <button id=\"send\" class=\"send\">send</button>\n      </div>\n    </div>");
+    test.appendChild(elem.firstChild);
+    flag = !flag; //console.log(flag);
+  } else if (!flag) {
+    var inp = document.querySelector(".comment-inp");
+    test.removeChild(inp);
+    flag = true; //console.log(flag);
+    //console.log(div);
+  }
+
+  sendComment();
 };
 
 for (var i = 1; i < 3; i++) {
@@ -230,13 +244,16 @@ function sendComment() {
   var edit = document.getElementById("edit");
   var deletes = document.getElementById("delete");
   var div = document.createElement("div");
+  div.className = "comment";
+  div.setAttribute("id", "comment-3");
+  div.setAttribute("data-num", "3");
   var imgPlus = plus.src;
   var imgMinus = minus.src;
   var imgReply = reply.src;
   var imgEdit = edit.src;
   var imgDelete = deletes.src;
   var comment = getComment();
-  div.innerHTML = "<div class=\"comment-item\">\n  <div class=\"comment-item__header\">\n      <img class=\"profile-pic\" src=\"".concat(img, "\" alt=\"profile-pic\">\n      <span class=\"user-name\">amyrobson</span>\n      <span class=\"date text-secondary\">1 month ago</span>\n  </div>\n  <div class=\"comment-item__comment\">\n      <p class=\"comment text-secondary\">").concat(comment, "</p>\n  </div>\n  <div class=\"comment-item__footer\">\n      <div class=\"rating\">\n        <img class=\"plus\" src=\"").concat(imgPlus, "\" alt=\"plus\">\n        <span class=\"point\">2</span>\n        <img class=\"minus\" src=\"").concat(imgMinus, "\" alt=\"minus\">\n      </div>\n      <div class=\"action\">\n          <span class=\"reply\"><img id=\"reply\" src=\"").concat(imgReply, "\" alt=\"reply\">reply</span>\n          <span class=\"delete\"><img id=\"delete\" src=\"").concat(imgDelete, "\" alt=\"delete\">delete</span>\n          <span class=\"edit\"><img id=\"edit\" src=\"").concat(imgEdit, "\" alt=\"edit\">edit</span>\n      </div>\n  </div>\n</div>");
+  div.innerHTML = "\n  <div class=\"comment-item\">\n  <div class=\"comment-item__header\">\n      <img class=\"profile-pic\" src=\"".concat(img, "\" alt=\"profile-pic\">\n      <span class=\"user-name\">amyrobson</span>\n      <span class=\"date text-secondary\">1 month ago</span>\n  </div>\n  <div class=\"comment-item__comment\">\n      <p class=\"comment text-secondary\">").concat(comment, "</p>\n  </div>\n  <div class=\"comment-item__footer\">\n      <div class=\"rating\">\n      <img data-num=\"btn3\" id=\"btn3-plus\" class=\"plus\" src=\"").concat(imgPlus, "\" alt=\"plus\">\n      <span id=\"btn3-counter\" class=\"point\">0</span>\n      <img data-num=\"btn3\" id=\"btn3-minus\" class=\"minus\" src=\"").concat(imgMinus, "\" alt=\"minus\">\n      </div>\n      <div class=\"action\">\n          <span class=\"reply\"><img id=\"reply\" src=\"").concat(imgReply, "\" alt=\"reply\">reply</span>\n          <span class=\"delete\"><img id=\"delete\" src=\"").concat(imgDelete, "\" alt=\"delete\">delete</span>\n          <span class=\"edit\"><img id=\"edit\" src=\"").concat(imgEdit, "\" alt=\"edit\">edit</span>\n      </div>\n  </div>\n</div>");
   commentWrapper.append(div);
 } // const reply = document.querySelectorAll(".reply");
 // reply.forEach(function (e) {
@@ -276,7 +293,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51450" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54402" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
